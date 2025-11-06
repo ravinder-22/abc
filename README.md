@@ -42,7 +42,28 @@ We implemented a single strong model pipeline using *LightGBM* and tuned its hyp
 
 ### 3.1 Architecture Overview
 
-Raw Product Data │ ├─► Data Preprocessing │        ├─ Missing value imputation │        ├─ Label & Target Encoding │        └─ Log-transform target variable │ ├─► Feature Engineering │        ├─ Derived product-level ratios │        ├─ Quantity-based normalization │        └─ Handling high-cardinality categorical features │ ├─► Model Training │        ├─ LightGBM Regressor │        └─ Optuna Bayesian Tuning │ ├─► Validation & Early Stopping │ └─► Prediction (Inverse log-transform → Final Price)
+flowchart TD
+
+    A[Raw Product Data]
+
+    A --> B[Data Preprocessing]
+    B --> B1[Missing Value Imputation]
+    B --> B2[Label & Target Encoding]
+    B --> B3[Log-Transform of Target Variable]
+
+    A --> C[Feature Engineering]
+    C --> C1[Derived Product-Level Ratios]
+    C --> C2[Quantity-Based Normalization]
+    C --> C3[Handling High-Cardinality Categorical Features]
+
+    A --> D[Model Training]
+    D --> D1[LightGBM Regressor]
+    D --> D2[Optuna Bayesian Hyperparameter Tuning]
+
+    D --> E[Validation & Early Stopping]
+
+    E --> F[Prediction]
+    F --> F1[Inverse Log-Transform → Final Price]
 
 ### 3.2 Model Components
 
