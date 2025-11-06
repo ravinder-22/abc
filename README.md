@@ -112,8 +112,29 @@ Our solution effectively models complex non-linear dependencies between product 
 ### A. Code Artefacts
 
 *Code Directory Structure:*
+flowchart LR
 
-📁 Smart_Product_Pricing/ │ ├── data/ │   ├── train.csv │   ├── test.csv │ ├── notebooks/ │   ├── EDA.ipynb │ ├── src/ │   ├── preprocess.py │   ├── feature_engineering.py │   ├── train.py │   ├── optuna_tuning.py │   ├── inference.py │ ├── models/ │   ├── lgbm_best_model.pkl │ └── README.md
+    A[📁 Smart_Product_Pricing/]
+
+    A --> B[📁 data/]
+    B --> B1[📄 train.csv]
+    B --> B2[📄 test.csv]
+
+    A --> C[📁 notebooks/]
+    C --> C1[📓 EDA.ipynb]
+
+    A --> D[📁 src/]
+    D --> D1[⚙️ preprocess.py]
+    D --> D2[⚙️ feature_engineering.py]
+    D --> D3[⚙️ train.py]
+    D --> D4[🎯 optuna_tuning.py]
+    D --> D5[🔍 inference.py]
+
+    A --> E[📁 models/]
+    E --> E1[🧠 lgbm_best_model.pkl]
+
+    A --> F[📘 README.md]
+
 
 ---
 
