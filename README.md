@@ -42,10 +42,6 @@ We implemented a single strong model pipeline using *LightGBM* and tuned its hyp
 
 ### 3.1 Architecture Overview
 
-## 3. Model Architecture
-
-### 3.1 Architecture Overview
-
 The following diagram illustrates the complete data flow of the product price prediction pipeline — from raw data ingestion to final model output.
 
 ```mermaid
@@ -72,8 +68,7 @@ flowchart LR
     E --> F[Prediction]
     F --> F1[Inverse Log-Transform → Final Price]
 
-
-
+```
 
 ### 3.2 Model Components
 
