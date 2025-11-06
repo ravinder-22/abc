@@ -44,55 +44,27 @@ We implemented a single strong model pipeline using *LightGBM* and tuned its hyp
 
 flowchart LR
 
-    %% ---------------- STYLES ---------------- %%
-    classDef data fill:#cce5ff,stroke:#003d80,stroke-width:1px,color:#000;
-    classDef preprocess fill:#d4edda,stroke:#1e7e34,stroke-width:1px,color:#000;
-    classDef feature fill:#fff3cd,stroke:#856404,stroke-width:1px,color:#000;
-    classDef training fill:#f8d7da,stroke:#721c24,stroke-width:1px,color:#000;
-    classDef validate fill:#e2e3e5,stroke:#6c757d,stroke-width:1px,color:#000;
-    classDef predict fill:#d1ecf1,stroke:#0c5460,stroke-width:1px,color:#000;
+    A[Raw Product Data]
 
-    %% ---------------- NODES ---------------- %%
-    A[[📦 Raw Product Data]]:::data
+    A --> B[Data Preprocessing]
+    B --> B1[Missing Value Imputation]
+    B --> B2[Label & Target Encoding]
+    B --> B3[Log-Transform Target Variable]
 
-    B[[🧹 Data Preprocessing]]:::preprocess
-    B1[🧩 Missing Value Imputation]:::preprocess
-    B2[🔤 Label & Target Encoding]:::preprocess
-    B3[📉 Log-Transform Target Variable]:::preprocess
+    A --> C[Feature Engineering]
+    C --> C1[Derived Product-Level Ratios]
+    C --> C2[Quantity-Based Normalization]
+    C --> C3[High-Cardinality Feature Handling]
 
-    C[[🛠️ Feature Engineering]]:::feature
-    C1[📊 Derived Product-Level Ratios]:::feature
-    C2[⚖️ Quantity-Based Normalization]:::feature
-    C3[🧬 High-Cardinality Categorical Handling]:::feature
+    A --> D[Model Training]
+    D --> D1[LightGBM Regressor]
+    D --> D2[Optuna Bayesian Tuning]
 
-    D[[🚀 Model Training]]:::training
-    D1[🌲 LightGBM Regressor]:::training
-    D2[🎯 Optuna Bayesian Tuning]:::training
+    D --> E[Validation & Early Stopping]
 
-    E[[✅ Validation & Early Stopping]]:::validate
+    E --> F[Prediction]
+    F --> F1[Inverse Log-Transform → Final Price]
 
-    F[[🔮 Prediction]]:::predict
-    F1[↩️ Inverse Log-Transform → Final Price]:::predict
-
-    %% ---------------- CONNECTIONS ---------------- %%
-    A --> B
-    B --> B1
-    B --> B2
-    B --> B3
-
-    A --> C
-    C --> C1
-    C --> C2
-    C --> C3
-
-    A --> D
-    D --> D1
-    D --> D2
-
-    D --> E
-
-    E --> F
-    F --> F1
 
 
 ### 3.2 Model Components
