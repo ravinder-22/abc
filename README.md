@@ -112,6 +112,9 @@ Our solution effectively models complex non-linear dependencies between product 
 ### A. Code Artefacts
 
 *Code Directory Structure:*
+
+```mermaid
+
 flowchart LR
 
     A[📁 Smart_Product_Pricing/]
@@ -135,6 +138,8 @@ flowchart LR
 
     A --> F[📘 README.md]
 
+
+```
 
 ---
 
